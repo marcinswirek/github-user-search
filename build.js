@@ -40,8 +40,7 @@ var App = function (_React$Component) {
       fetch(url).then(function (response) {
         return response.json();
       }).then(function (responseJson) {
-        _this2.setState({ users: responseJson.items });
-        console.log(_this2.state.users);
+        return _this2.setState({ users: responseJson.items });
       });
     }
   }, {
@@ -51,7 +50,8 @@ var App = function (_React$Component) {
 
       return React.createElement(
         "div",
-        null,
+        { className: "application" },
+        React.createElement("img", { className: "gitLogo", src: "./images/github-logo.png" }),
         React.createElement(
           "form",
           { onSubmit: function onSubmit(event) {
@@ -93,8 +93,8 @@ var UsersList = function (_React$Component2) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
-        this.user
+        { className: "usersList" },
+        this.users
       );
     }
   }, {
@@ -123,11 +123,19 @@ var User = function (_React$Component3) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
-        React.createElement("img", { src: this.props.user.avatar_url, style: { maxWidth: "100px" } }),
+        { className: "userItem" },
+        React.createElement("img", {
+          className: "userAvatar",
+          src: this.props.user.avatar_url,
+          style: { maxWidth: "100px" }
+        }),
         React.createElement(
           "a",
-          { href: this.props.user.html_url, target: "_blank" },
+          {
+            className: "userLink",
+            href: this.props.user.html_url,
+            target: "_blank"
+          },
           this.props.user.login
         )
       );

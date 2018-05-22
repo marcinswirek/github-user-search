@@ -19,15 +19,13 @@ class App extends React.Component {
     const url = `https://api.github.com/search/users?q=${searchText}`;
     fetch(url)
       .then(response => response.json())
-      .then(responseJson => {
-        this.setState({ users: responseJson.items });
-        console.log(this.state.users);
-      });
+      .then(responseJson => this.setState({ users: responseJson.items }));
   }
 
   render() {
     return (
-      <div>
+      <div className={"application"}>
+        <img className={"gitLogo"} src="./images/github-logo.png" />
         <form onSubmit={event => this.onSubmit(event)}>
           <label htmlFor="searchText">Search by user name</label>
           <input
@@ -49,16 +47,24 @@ class UsersList extends React.Component {
   }
 
   render() {
-    return <div>{this.user}</div>;
+    return <div className={"usersList"}>{this.users}</div>;
   }
 }
 
 class User extends React.Component {
   render() {
     return (
-      <div>
-        <img src={this.props.user.avatar_url} style={{ maxWidth: "100px" }} />
-        <a href={this.props.user.html_url} target="_blank">
+      <div className={"userItem"}>
+        <img
+          className={"userAvatar"}
+          src={this.props.user.avatar_url}
+          style={{ maxWidth: "100px" }}
+        />
+        <a
+          className={"userLink"}
+          href={this.props.user.html_url}
+          target="_blank"
+        >
           {this.props.user.login}
         </a>
       </div>
