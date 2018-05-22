@@ -1,3 +1,5 @@
+"use strict";
+
 class App extends React.Component {
   constructor() {
     super();
@@ -17,7 +19,10 @@ class App extends React.Component {
     const url = `https://api.github.com/search/users?q=${searchText}`;
     fetch(url)
       .then(response => response.json())
-      .then(responseJson => this.setState({ users: responseJson.items }));
+      .then(responseJson => {
+        this.setState({ users: responseJson.items });
+        console.log(this.state.users);
+      });
   }
 
   render() {

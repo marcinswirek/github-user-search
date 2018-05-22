@@ -40,7 +40,8 @@ var App = function (_React$Component) {
       fetch(url).then(function (response) {
         return response.json();
       }).then(function (responseJson) {
-        return _this2.setState({ users: responseJson.items });
+        _this2.setState({ users: responseJson.items });
+        console.log(_this2.state.users);
       });
     }
   }, {
