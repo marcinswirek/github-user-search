@@ -1,21 +1,18 @@
-import React, {useState, SetState, useEffect} from 'react'
+import React, {useState} from 'react'
 import styled from 'styled-components'
-import GlobalFonts from '../fonts/fonts';
-import LogoSrc from '../assets/images/github-logo.png';
-import SearchInput from './SearchInput';
+import GlobalStyle from '../global/globalStyle'
+import LogoSrc from '../assets/images/github-logo.png'
+import SearchInput from './SearchInput'
+import UsersList from './UsersList'
+
 
 const Application = styled.div`
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   font-family: Arnold;
 `;
 
 const HeaderImage = styled.img`
-  width: 300px;
-  height: 130px;
-  margin-bottom: 20px;
+  margin: 0 auto;
 `;
 
 const FooterLink = styled.span`
@@ -31,8 +28,6 @@ const App = () => {
     setInputValue(e.target.value)
   }
 
-  console.log(users)
-
   const onSubmitHandler = (e) => {
     e.preventDefault()
     const url = `https://api.github.com/search/users?q=${inputValue}`;
@@ -45,10 +40,11 @@ const App = () => {
 
   return (
     <>
-      <GlobalFonts/>
+      <GlobalStyle/>
       <Application>
         <HeaderImage src={ LogoSrc }/>
         <SearchInput inputValue={inputValue} onSubmitHandler={onSubmitHandler} handleInputChange={handleInputChange}/>
+        <UsersList users={users}/>
         <FooterLink>Font made from <a href="http://www.onlinewebfonts.com">oNline Web Fonts</a> is licensed by CC BY 3.0</FooterLink>
       </Application>
     </>
