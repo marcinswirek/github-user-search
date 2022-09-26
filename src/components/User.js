@@ -13,7 +13,7 @@ const UserBox = styled.div`
 const UserAvatar = styled.img`
   margin: 5px auto;
   border-radius: 50%;
-	max-width: 100px;
+  max-width: 100px;
 `;
 
 const UserLink = styled.a`

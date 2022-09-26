@@ -30,7 +30,7 @@ const App = () => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault()
-    const url = `https://api.github.com/search/users?q=${inputValue}`;
+    const url = `https://api.github.com/search/users?per_page=30&q=${inputValue}`;
     fetch(url)
       .then(response => response.json())
       .then(responseJson => setUsers(responseJson.items));
